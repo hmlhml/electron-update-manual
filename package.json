@@ -1,0 +1,70 @@
+{
+  "name": "electron-updater",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./app/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "chcp 65001 && electron .",
+    "build": "chcp 65001 && electron-builder --win --x64"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^14.0.0",
+    "electron-builder": "^22.11.7"
+  },
+  "dependencies": {
+    "@electron/remote": "^2.0.1",
+    "electron-updater": "^4.3.9"
+  },
+  "build": {
+    "productName": "electron手动升级Demo",
+    "appId": "com.leon.electron-updater",
+    "copyright": "electron-updater",
+    "directories": {
+      "output": "build"
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": " http://127.0.0.1:8080/"
+      }
+    ],
+    "files": [
+      "*/**"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "mac": {
+      "icon": "build/icons/icon.icns"
+    },
+    "win": {
+      "icon": "build/icons/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "linux": {
+      "icon": "build/icons"
+    }
+  }
+}
